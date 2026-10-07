@@ -1,0 +1,8 @@
+{
+  "name": "Vet CRM - نظام إدارة علاقات العملاء للأدوية البيطرية",
+  "description": "نظام CRM بسيط وسهل الاستخدام مستوحى من Odoo CRM مخصص لشركات الأدوية البيطرية لإدارة العملاء والفرص والمتابعات والمنتجات البيطرية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
