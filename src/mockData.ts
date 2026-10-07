@@ -35,42 +35,6 @@ export const INITIAL_USERS: User[] = [
     createdAt: '2026-01-01',
   },
   {
-    id: 'user-2',
-    username: 'sara',
-    password: '123',
-    name: 'سارة المحمود',
-    email: 'sara@akbitra-pharma.sy',
-    phone: '0955334455',
-    role: 'sales',
-    roleTitle: 'مسؤولة تواصل ومتابعة',
-    isActive: true,
-    createdAt: '2026-01-10',
-  },
-  {
-    id: 'user-3',
-    username: 'ahmad',
-    password: '123',
-    name: 'أحمد المصري',
-    email: 'ahmad@akbitra-pharma.sy',
-    phone: '0933778899',
-    role: 'manager',
-    roleTitle: 'مدير التسويق والمبيعات',
-    isActive: true,
-    createdAt: '2026-01-05',
-  },
-  {
-    id: 'user-4',
-    username: 'mohammed',
-    password: '123',
-    name: 'محمد العبدالله',
-    email: 'mohammed@akbitra-pharma.sy',
-    phone: '0988665544',
-    role: 'sales',
-    roleTitle: 'مندوب علمي وميداني',
-    isActive: true,
-    createdAt: '2026-02-01',
-  },
-  {
     id: 'user-5',
     username: 'luna',
     password: '123',
@@ -135,26 +99,26 @@ export const INITIAL_USERS: User[] = [
 export const INITIAL_CHAT_MESSAGES: ChatMessage[] = [
   {
     id: 'msg-1',
-    senderId: 'user-3', // أحمد المصري (مدير التسويق)
-    receiverId: 'user-2', // سارة المحمود
-    content: 'صباح الخير سارة، يرجى متابعة الدكتور أحمد محمد بخصوص طلبية أموكسيفيت 20%، جاهزون لتسليم الشحنة وتسهيل الدفع إذا أكد 50 عبوة اليوم.',
+    senderId: 'user-5', // لونا أيوب (مدير التسويق)
+    receiverId: 'user-6', // ندى دلال (موظفة تسويق)
+    content: 'صباح الخير ندى، يرجى متابعة الدكتور أحمد محمد بخصوص طلبية أموكسيفيت 20%، جاهزون لتسليم الشحنة وتسهيل الدفع إذا أكد 50 عبوة اليوم.',
     relatedCustomerId: 'cust-1',
     createdAt: '2026-10-05T09:30:00',
     read: true,
   },
   {
     id: 'msg-2',
-    senderId: 'user-2', // سارة
-    receiverId: 'user-3', // أحمد
-    content: 'أهلاً أستاذ أحمد، تمام تواصلت معه عبر WhatsApp وطلب شهادة الصلاحية والتحليل المخبري. أرسلتها له وبانتظار تأكيد أمر الشراء قبل الظهر.',
+    senderId: 'user-6', // ندى دلال
+    receiverId: 'user-5', // لونا أيوب
+    content: 'أهلاً أستاذة لونا، تمام تواصلت معه عبر WhatsApp وطلب شهادة الصلاحية والتحليل المخبري. أرسلتها له وبانتظار تأكيد أمر الشراء قبل الظهر.',
     relatedCustomerId: 'cust-1',
     createdAt: '2026-10-05T09:45:00',
     read: true,
   },
   {
     id: 'msg-3',
-    senderId: 'user-3', // أحمد المصري
-    receiverId: 'user-2', // سارة
+    senderId: 'user-5', // لونا أيوب
+    receiverId: 'user-6', // ندى دلال
     content: 'ممتاز جداً! أيضاً لا تنسي التواصل مع مزرعة النور للدواجن بحمص بخصوص دفعة فيتاسول فورت.',
     relatedCustomerId: 'cust-3',
     createdAt: '2026-10-05T10:15:00',
@@ -162,18 +126,18 @@ export const INITIAL_CHAT_MESSAGES: ChatMessage[] = [
   },
   {
     id: 'msg-4',
-    senderId: 'user-3', // أحمد المصري
-    receiverId: 'user-4', // محمد العبدالله
-    content: 'مرحبا د. محمد، نرجو التركيز خلال زياراتك لصيدليات حلب اليوم على عرض التخفيضات الخاص بـ أوكسيفيت ل.أ وفيتاسول فورت.',
+    senderId: 'user-5', // لونا أيوب
+    receiverId: 'user-7', // هبة السمرا
+    content: 'مرحبا هبة، نرجو التركيز خلال متابعات صيدليات حلب اليوم على عرض التخفيضات الخاص بـ أوكسيفيت ل.أ وفيتاسول فورت.',
     relatedCustomerId: 'cust-2',
     createdAt: '2026-10-05T08:50:00',
     read: true,
   },
   {
     id: 'msg-5',
-    senderId: 'user-4', // محمد العبدالله
-    receiverId: 'user-3', // أحمد المصري
-    content: 'تم أستاذ أحمد، زرت صيدلية الشفاء بحلب وهم مهتمون جداً بطلب 100 عبوة وسأرفع عرض السعر على النظام فور اعتماده.',
+    senderId: 'user-7', // هبة السمرا
+    receiverId: 'user-5', // لونا أيوب
+    content: 'تم أستاذة لونا، تواصلت مع صيدلية الشفاء بحلب وهم مهتمون جداً بطلب 100 عبوة وسأرفع عرض السعر على النظام فور اعتماده.',
     relatedCustomerId: 'cust-2',
     createdAt: '2026-10-05T11:20:00',
     read: false,
@@ -181,8 +145,8 @@ export const INITIAL_CHAT_MESSAGES: ChatMessage[] = [
   {
     id: 'msg-6',
     senderId: 'user-1', // مرعي الاحمد (مدير النظام)
-    receiverId: 'user-3', // أحمد المصري (مدير التسويق)
-    content: 'أهلاً أستاذ أحمد، اطلعت على تقرير سير العمل ونسب إغلاق الفرص لهذا الأسبوع. الأداء ممتاز جداً مع مزارع ريف دمشق.',
+    receiverId: 'user-5', // لونا أيوب (مدير التسويق)
+    content: 'أهلاً أستاذة لونا، اطلعت على تقرير سير العمل ونسب إغلاق الفرص لهذا الأسبوع. الأداء ممتاز جداً مع مزارع ريف دمشق.',
     createdAt: '2026-10-05T12:00:00',
     read: true,
   },
@@ -200,7 +164,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'veterinarian',
     city: 'دمشق',
     area: 'الميدان / المزة',
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-6', // ندى دلال
     source: 'whatsapp',
     status: 'active',
     notes: 'طبيب بيطري معروف، يشرف على عدة مزارع أبقار في الغوطة الغربية. مهتم بالطلبيات الكبيرة.',
@@ -220,7 +184,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'pharmacy',
     city: 'حلب',
     area: 'الجميلية',
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-7', // هبة السمرا
     source: 'field_visit',
     status: 'followup',
     notes: 'صيدلية رئيسية توزع للأطباء والمربين. تطلب تسهيلات دفع 30 يوم وخصم كميات.',
@@ -239,7 +203,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'farm',
     city: 'حمص',
     area: 'طريق حماة / الرستن',
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-8', // صفاء دهشان
     source: 'facebook',
     status: 'new',
     notes: 'مزرعة بياض وتسمين سعة 40 ألف طير. دورة تربية جديدة تبدأ الأسبوع القادم.',
@@ -258,7 +222,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'clinic',
     city: 'حماة',
     area: 'ساحة العاصي',
-    assignedTo: 'user-3', // أحمد
+    assignedTo: 'user-5', // لونا أيوب
     source: 'phone',
     status: 'active',
     notes: 'عيادة بيطرية متخصصة بالخيول والحيوانات الحقلية. عميل ملتزم وموثوق.',
@@ -278,7 +242,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'distributor',
     city: 'دمشق',
     area: 'البرامكة',
-    assignedTo: 'user-3', // أحمد
+    assignedTo: 'user-5', // لونا أيوب
     source: 'referral',
     status: 'active',
     notes: 'موزع جملة يغطي محافظات الساحل والجنوب. حجم طلبيات عالي.',
@@ -298,7 +262,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'farm',
     city: 'ريف دمشق',
     area: 'النشابية / الغوطة',
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-6', // ندى دلال
     source: 'whatsapp',
     status: 'followup',
     notes: 'مزرعة تضم 180 رأس بقر هولشتاين. بحاجة دائمة لمحاليل كالسيوم ومضادات التهاب ضرع.',
@@ -317,7 +281,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'veterinarian',
     city: 'اللاذقية',
     area: 'مشروع الصليبة',
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-9', // ماسة أبو النصر
     source: 'exhibition',
     status: 'active',
     notes: 'مشرفة على مزارع الأغنام والدواجن في الساحل. مهتمة بالنشرات الفنية والدراسات الدوائية.',
@@ -336,7 +300,7 @@ export const INITIAL_CUSTOMERS: Customer[] = [
     customerType: 'pharmacy',
     city: 'طرطوس',
     area: 'طريق الدريكيش',
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-7', // هبة السمرا
     source: 'phone',
     status: 'new',
     notes: 'صيدلية جديدة تم افتتاحها مؤخراً، تطلب كاتالوج المنتجات وقائمة أسعار الوكيل.',
@@ -355,7 +319,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-1',
     customerId: 'cust-1', // د. أحمد محمد
     productId: 'prod-1', // Dimapen
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-6', // ندى دلال
     title: 'طلبية ديمابن 50 عبوة لمزارع الغوطة',
     stage: 'interested',
     quantity: 50,
@@ -369,7 +333,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-2',
     customerId: 'cust-2', // صيدلية الشفاء
     productId: 'prod-1', // Dimapen
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-7', // هبة السمرا
     title: 'عرض سعر 100 عبوة ديمابن مع شروط دفع',
     stage: 'quotation',
     quantity: 100,
@@ -383,7 +347,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-3',
     customerId: 'cust-3', // مزرعة النور للدواجن
     productId: 'prod-35', // Dimavit AD3E
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-8', // صفاء دهشان
     title: 'توريد فيتامينات لدورة تحضين الدواجن',
     stage: 'contacted',
     quantity: 30,
@@ -397,7 +361,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-4',
     customerId: 'cust-4', // د. خالد العلي
     productId: 'prod-41', // Floroject
-    assignedTo: 'user-3', // أحمد
+    assignedTo: 'user-5', // لونا أيوب
     title: 'تجربة فلورجيكت للأبقار',
     stage: 'new',
     quantity: 20,
@@ -411,7 +375,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-5',
     customerId: 'cust-5', // شركة الفيحاء للتوزيع
     productId: 'prod-55', // Oxydima 30%
-    assignedTo: 'user-3', // أحمد
+    assignedTo: 'user-5', // لونا أيوب
     title: 'عقد توريد شهري 150 عبوة أوكسي طويل المفعول',
     stage: 'won',
     quantity: 150,
@@ -426,7 +390,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-6',
     customerId: 'cust-6', // مزرعة البركة للأبقار
     productId: 'prod-42', // Calcium-24
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-6', // ندى دلال
     title: 'طلبية إسعافية 60 عبوة كالسيوم 24',
     stage: 'quotation',
     quantity: 60,
@@ -440,7 +404,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-7',
     customerId: 'cust-7', // د. ريم سليمان
     productId: 'prod-75', // Ivermac Super 400ml
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-9', // ماسة أبو النصر
     title: 'طلبية ايفرماك سوبر 25 عبوة (400 مل)',
     stage: 'won',
     quantity: 25,
@@ -455,7 +419,7 @@ export const INITIAL_OPPORTUNITIES: Opportunity[] = [
     id: 'opp-8',
     customerId: 'cust-8', // صيدلية النسر
     productId: 'prod-1', // Dimapen
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-7', // هبة السمرا
     title: 'باقة افتتاح صيدلية تشمل ديمابن وفيتامينات',
     stage: 'new',
     quantity: 40,
@@ -472,7 +436,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-1',
     customerId: 'cust-1', // د. أحمد محمد
     opportunityId: 'opp-1',
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-6', // ندى دلال
     type: 'whatsapp',
     dueDate: '2026-10-03', // متأخرة منذ يومين
     dueTime: '11:00',
@@ -484,7 +448,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-2',
     customerId: 'cust-3', // مزرعة النور
     opportunityId: 'opp-3',
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-8', // صفاء دهشان
     type: 'call',
     dueDate: '2026-10-04', // متأخرة منذ يوم
     dueTime: '14:30',
@@ -496,7 +460,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-3',
     customerId: 'cust-2', // صيدلية الشفاء
     opportunityId: 'opp-2',
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-7', // هبة السمرا
     type: 'call',
     dueDate: '2026-10-05', // اليوم
     dueTime: '11:00',
@@ -508,7 +472,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-4',
     customerId: 'cust-6', // مزرعة البركة للأبقار
     opportunityId: 'opp-6',
-    assignedTo: 'user-2', // سارة
+    assignedTo: 'user-6', // ندى دلال
     type: 'whatsapp',
     dueDate: '2026-10-05', // اليوم
     dueTime: '13:30',
@@ -520,7 +484,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-5',
     customerId: 'cust-4', // د. خالد العلي
     opportunityId: 'opp-4',
-    assignedTo: 'user-3', // أحمد
+    assignedTo: 'user-5', // لونا أيوب
     type: 'visit',
     dueDate: '2026-10-06', // غداً - قادمة
     dueTime: '10:00',
@@ -532,7 +496,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-6',
     customerId: 'cust-8', // صيدلية النسر
     opportunityId: 'opp-8',
-    assignedTo: 'user-4', // محمد
+    assignedTo: 'user-7', // هبة السمرا
     type: 'call',
     dueDate: '2026-10-07', // قادمة
     dueTime: '12:00',
@@ -544,7 +508,7 @@ export const INITIAL_FOLLOW_UPS: FollowUp[] = [
     id: 'flw-7',
     customerId: 'cust-5', // شركة الفيحاء
     opportunityId: 'opp-5',
-    assignedTo: 'user-3', // أحمد
+    assignedTo: 'user-5', // لونا أيوب
     type: 'visit',
     dueDate: '2026-10-01',
     dueTime: '11:00',
@@ -560,7 +524,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   {
     id: 'act-1',
     customerId: 'cust-1', // د. أحمد
-    userId: 'user-2',
+    userId: 'user-6',
     type: 'whatsapp',
     title: 'محادثة WhatsApp',
     description: 'تم إرسال بروشور ومعلومات دواء ديمابن، العميل أبدى اهتماماً كبيراً لطلب 50 عبوة.',
@@ -569,7 +533,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   {
     id: 'act-2',
     customerId: 'cust-1',
-    userId: 'user-2',
+    userId: 'user-6',
     type: 'call',
     title: 'اتصال هاتفي',
     description: 'العميل استفسر عن أسعار الجملة للكميات وطلب معرفة سرعة الشحن إلى مزارع ريف دمشق.',
@@ -578,7 +542,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   {
     id: 'act-3',
     customerId: 'cust-1',
-    userId: 'user-2',
+    userId: 'user-6',
     type: 'note',
     title: 'ملاحظة داخلية',
     description: 'مهتم بشراء كمية دورية للمزرعة المشرف عليها، يفضل التواصل صباحاً عبر واتساب.',
@@ -587,16 +551,16 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   {
     id: 'act-4',
     customerId: 'cust-1',
-    userId: 'user-2',
+    userId: 'user-6',
     type: 'customer_created',
     title: 'تم إنشاء العميل',
-    description: 'تمت إضافة ملف الطبيب البيطري د. أحمد محمد إلى النظام بواسطة سارة المحمود.',
+    description: 'تمت إضافة ملف الطبيب البيطري د. أحمد محمد إلى النظام بواسطة ندى دلال.',
     createdAt: '2026-10-01T09:15:00',
   },
   {
     id: 'act-5',
     customerId: 'cust-2', // صيدلية الشفاء
-    userId: 'user-4',
+    userId: 'user-7',
     type: 'visit',
     title: 'زيارة ميدانية للصيدلية',
     description: 'زيارة مقر الصيدلية في حلب، لقاء مع الصيدلي المسؤول وعرض عينات ديمابن وديمافيت.',
@@ -605,7 +569,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   {
     id: 'act-6',
     customerId: 'cust-3', // مزرعة النور
-    userId: 'user-2',
+    userId: 'user-8',
     type: 'facebook',
     title: 'رسالة عبر فيسبوك',
     description: 'استفسار من المزرعة على إعلان فيتامينات الدواجن، تم الرد وأخذ رقم الواتساب للمتابعة.',
@@ -614,7 +578,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
   {
     id: 'act-7',
     customerId: 'cust-5', // شركة الفيحاء
-    userId: 'user-3',
+    userId: 'user-5',
     type: 'sale_recorded',
     title: 'تسجيل عملية بيع مكتملة',
     description: 'تم بنجاح إتمام وتوريد 150 عبوة أوكسي فيت ل.أ بقيمة إجمالية $2,400.',
@@ -628,7 +592,7 @@ export const INITIAL_SALES: Sale[] = [
     customerId: 'cust-5',
     opportunityId: 'opp-5',
     productId: 'prod-55',
-    userId: 'user-3', // أحمد
+    userId: 'user-5', // لونا أيوب
     quantity: 150,
     unitPrice: 16.0,
     totalAmount: 2400,
@@ -641,7 +605,7 @@ export const INITIAL_SALES: Sale[] = [
     customerId: 'cust-7',
     opportunityId: 'opp-7',
     productId: 'prod-75',
-    userId: 'user-4', // محمد
+    userId: 'user-9', // ماسة أبو النصر
     quantity: 25,
     unitPrice: 28.0,
     totalAmount: 700,
@@ -653,7 +617,7 @@ export const INITIAL_SALES: Sale[] = [
     id: 'sale-3',
     customerId: 'cust-4',
     productId: 'prod-1',
-    userId: 'user-3',
+    userId: 'user-5', // لونا أيوب
     quantity: 40,
     unitPrice: 12.5,
     totalAmount: 500,
@@ -665,7 +629,7 @@ export const INITIAL_SALES: Sale[] = [
     id: 'sale-4',
     customerId: 'cust-2',
     productId: 'prod-35',
-    userId: 'user-4',
+    userId: 'user-7', // هبة السمرا
     quantity: 50,
     unitPrice: 14.0,
     totalAmount: 700,
@@ -677,7 +641,7 @@ export const INITIAL_SALES: Sale[] = [
     id: 'sale-5',
     customerId: 'cust-5',
     productId: 'prod-1',
-    userId: 'user-3',
+    userId: 'user-5', // لونا أيوب
     quantity: 400,
     unitPrice: 12.0,
     totalAmount: 4800,
@@ -689,7 +653,7 @@ export const INITIAL_SALES: Sale[] = [
     id: 'sale-6',
     customerId: 'cust-6',
     productId: 'prod-42',
-    userId: 'user-2',
+    userId: 'user-6', // ندى دلال
     quantity: 200,
     unitPrice: 8.5,
     totalAmount: 1700,
@@ -701,7 +665,7 @@ export const INITIAL_SALES: Sale[] = [
     id: 'sale-7',
     customerId: 'cust-3',
     productId: 'prod-33',
-    userId: 'user-2',
+    userId: 'user-8', // صفاء دهشان
     quantity: 90,
     unitPrice: 18.5,
     totalAmount: 1665,

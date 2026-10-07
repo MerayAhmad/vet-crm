@@ -98,18 +98,18 @@ interface CrmContextType {
 const CrmContext = createContext<CrmContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  USERS: 'vetcrm_users_v3',
-  AUTH_USER_ID: 'vetcrm_auth_user_id_v2',
-  CURRENT_USER_ID: 'vetcrm_current_user_id_v2',
-  CUSTOMERS: 'vetcrm_customers_v2',
+  USERS: 'vetcrm_users_v4',
+  AUTH_USER_ID: 'vetcrm_auth_user_id_v3',
+  CURRENT_USER_ID: 'vetcrm_current_user_id_v3',
+  CUSTOMERS: 'vetcrm_customers_v3',
   PRODUCTS: 'vetcrm_products_v2',
-  OPPORTUNITIES: 'vetcrm_opportunities_v2',
-  FOLLOW_UPS: 'vetcrm_followups_v2',
-  ACTIVITIES: 'vetcrm_activities_v2',
-  SALES: 'vetcrm_sales_v2',
+  OPPORTUNITIES: 'vetcrm_opportunities_v3',
+  FOLLOW_UPS: 'vetcrm_followups_v3',
+  ACTIVITIES: 'vetcrm_activities_v3',
+  SALES: 'vetcrm_sales_v3',
   SETTINGS: 'vetcrm_settings_v1',
   ROLE_FILTER: 'vetcrm_role_filter_v1',
-  CHAT_MESSAGES: 'vetcrm_chat_messages_v2',
+  CHAT_MESSAGES: 'vetcrm_chat_messages_v3',
 };
 
 export const CrmProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -117,6 +117,19 @@ export const CrmProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [users, setUsers] = useState<User[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.USERS);
     let loadedUsers: User[] = saved ? JSON.parse(saved) : INITIAL_USERS;
+
+    // Purge deleted users: أحمد المصري, سارة المحمود, محمد العبدالله
+    const deletedIds = ['user-2', 'user-3', 'user-4'];
+    const deletedUsernames = ['sara', 'ahmad', 'mohammed'];
+    const deletedNames = ['سارة المحمود', 'أحمد المصري', 'محمد العبدالله'];
+
+    loadedUsers = loadedUsers.filter(
+      (u) =>
+        !deletedIds.includes(u.id) &&
+        !deletedUsernames.includes(u.username) &&
+        !deletedNames.includes(u.name)
+    );
+
     // Migration: ensure user-1 is 'مرعي الاحمد' and all users have usernames/passwords
     loadedUsers = loadedUsers.map((u) => {
       if (u.id === 'user-1') {
@@ -130,15 +143,6 @@ export const CrmProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           email: 'meray@akbitra-pharma.sy',
         };
       }
-      if (u.id === 'user-2') {
-        return { ...u, username: u.username || 'sara', password: u.password || '123' };
-      }
-      if (u.id === 'user-3') {
-        return { ...u, username: u.username || 'ahmad', password: u.password || '123' };
-      }
-      if (u.id === 'user-4') {
-        return { ...u, username: u.username || 'mohammed', password: u.password || '123' };
-      }
       return {
         ...u,
         username: u.username || `user_${u.id.replace(/[^a-zA-Z0-9]/g, '')}`,
@@ -151,18 +155,30 @@ export const CrmProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [currentUserId, setCurrentUserId] = useState<string>(() => {
     const authId = localStorage.getItem(STORAGE_KEYS.AUTH_USER_ID);
     const savedId = localStorage.getItem(STORAGE_KEYS.CURRENT_USER_ID);
-    return authId || savedId || 'user-1';
+    const targetId = authId || savedId || 'user-1';
+    if (targetId === 'user-2' || targetId === 'user-3' || targetId === 'user-4') {
+      return 'user-1';
+    }
+    return targetId;
   });
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     const hasSession = sessionStorage.getItem('vetcrm_session_active') === 'true';
     const authId = localStorage.getItem(STORAGE_KEYS.AUTH_USER_ID);
+    if (authId === 'user-2' || authId === 'user-3' || authId === 'user-4') {
+      return false;
+    }
     return Boolean(hasSession && authId);
   });
 
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.CHAT_MESSAGES);
-    return saved ? JSON.parse(saved) : INITIAL_CHAT_MESSAGES;
+    let msgs: ChatMessage[] = saved ? JSON.parse(saved) : INITIAL_CHAT_MESSAGES;
+    const deletedIds = ['user-2', 'user-3', 'user-4'];
+    msgs = msgs.filter(
+      (m) => !deletedIds.includes(m.senderId) && !deletedIds.includes(m.receiverId)
+    );
+    return msgs.length > 0 ? msgs : INITIAL_CHAT_MESSAGES;
   });
 
   const [roleFilterApplied, setRoleFilterApplied] = useState<boolean>(() => {
@@ -172,7 +188,14 @@ export const CrmProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [allCustomers, setAllCustomers] = useState<Customer[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.CUSTOMERS);
-    return saved ? JSON.parse(saved) : INITIAL_CUSTOMERS;
+    let list: Customer[] = saved ? JSON.parse(saved) : INITIAL_CUSTOMERS;
+    // Map deleted user assignments to active team members
+    return list.map((c) => {
+      if (c.assignedTo === 'user-2') return { ...c, assignedTo: 'user-6' };
+      if (c.assignedTo === 'user-3') return { ...c, assignedTo: 'user-5' };
+      if (c.assignedTo === 'user-4') return { ...c, assignedTo: 'user-7' };
+      return c;
+    });
   });
 
   const [products, setProducts] = useState<Product[]>(() => {
@@ -182,22 +205,46 @@ export const CrmProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [allOpportunities, setAllOpportunities] = useState<Opportunity[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.OPPORTUNITIES);
-    return saved ? JSON.parse(saved) : INITIAL_OPPORTUNITIES;
+    let list: Opportunity[] = saved ? JSON.parse(saved) : INITIAL_OPPORTUNITIES;
+    return list.map((o) => {
+      if (o.assignedTo === 'user-2') return { ...o, assignedTo: 'user-6' };
+      if (o.assignedTo === 'user-3') return { ...o, assignedTo: 'user-5' };
+      if (o.assignedTo === 'user-4') return { ...o, assignedTo: 'user-7' };
+      return o;
+    });
   });
 
   const [allFollowUps, setAllFollowUps] = useState<FollowUp[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.FOLLOW_UPS);
-    return saved ? JSON.parse(saved) : INITIAL_FOLLOW_UPS;
+    let list: FollowUp[] = saved ? JSON.parse(saved) : INITIAL_FOLLOW_UPS;
+    return list.map((f) => {
+      if (f.assignedTo === 'user-2') return { ...f, assignedTo: 'user-6' };
+      if (f.assignedTo === 'user-3') return { ...f, assignedTo: 'user-5' };
+      if (f.assignedTo === 'user-4') return { ...f, assignedTo: 'user-7' };
+      return f;
+    });
   });
 
   const [activities, setActivities] = useState<Activity[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.ACTIVITIES);
-    return saved ? JSON.parse(saved) : INITIAL_ACTIVITIES;
+    let list: Activity[] = saved ? JSON.parse(saved) : INITIAL_ACTIVITIES;
+    return list.map((a) => {
+      if (a.userId === 'user-2') return { ...a, userId: 'user-6' };
+      if (a.userId === 'user-3') return { ...a, userId: 'user-5' };
+      if (a.userId === 'user-4') return { ...a, userId: 'user-7' };
+      return a;
+    });
   });
 
   const [sales, setSales] = useState<Sale[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.SALES);
-    return saved ? JSON.parse(saved) : INITIAL_SALES;
+    let list: Sale[] = saved ? JSON.parse(saved) : INITIAL_SALES;
+    return list.map((s) => {
+      if (s.userId === 'user-2') return { ...s, userId: 'user-6' };
+      if (s.userId === 'user-3') return { ...s, userId: 'user-5' };
+      if (s.userId === 'user-4') return { ...s, userId: 'user-7' };
+      return s;
+    });
   });
 
   const [companySettings, setCompanySettings] = useState<CompanySettings>(() => {

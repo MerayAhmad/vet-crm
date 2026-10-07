@@ -170,62 +170,17 @@ export const LoginScreen: React.FC = () => {
               </div>
             </button>
 
-            {/* Ahmad (Marketing Manager) */}
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('ahmad', '123')}
-              className="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 hover:bg-blue-100/70 text-right transition-colors"
-            >
-              <div className="font-bold text-blue-950 flex items-center gap-1">
-                <span>أحمد المصري</span>
-                <span className="text-[10px] text-blue-600 font-normal">(مدير التسويق)</span>
-              </div>
-              <div className="text-[10px] text-blue-700 font-mono">
-                يوزر: ahmad
-              </div>
-            </button>
-
-            {/* Sara (Sales) */}
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('sara', '123')}
-              className="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-right transition-colors"
-            >
-              <div className="font-bold text-emerald-950 flex items-center gap-1">
-                <span>سارة المحمود</span>
-                <span className="text-[10px] text-emerald-600 font-normal">(Call Center)</span>
-              </div>
-              <div className="text-[10px] text-emerald-700 font-mono">
-                يوزر: sara
-              </div>
-            </button>
-
-            {/* Mohammed (Field Rep) */}
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('mohammed', '123')}
-              className="p-2.5 rounded-xl border border-amber-200 bg-amber-50/60 hover:bg-amber-100/70 text-right transition-colors"
-            >
-              <div className="font-bold text-amber-950 flex items-center gap-1">
-                <span>محمد العبدالله</span>
-                <span className="text-[10px] text-amber-600 font-normal">(مندوب)</span>
-              </div>
-              <div className="text-[10px] text-amber-700 font-mono">
-                يوزر: mohammed
-              </div>
-            </button>
-
             {/* luna */}
             <button
               type="button"
               onClick={() => handleQuickLogin('luna', '123')}
-              className="p-2.5 rounded-xl border border-rose-200 bg-rose-50/60 hover:bg-rose-100/70 text-right transition-colors"
+              className="p-2.5 rounded-xl border border-blue-200 bg-blue-50/60 hover:bg-blue-100/70 text-right transition-colors"
             >
-              <div className="font-bold text-rose-950 flex items-center gap-1">
+              <div className="font-bold text-blue-950 flex items-center gap-1">
                 <span>لونا أيوب</span>
-                <span className="text-[10px] text-rose-600 font-normal">(مدير التسويق)</span>
+                <span className="text-[10px] text-blue-600 font-normal">(مدير التسويق)</span>
               </div>
-              <div className="text-[10px] text-rose-700 font-mono">
+              <div className="text-[10px] text-blue-700 font-mono">
                 يوزر: luna
               </div>
             </button>
